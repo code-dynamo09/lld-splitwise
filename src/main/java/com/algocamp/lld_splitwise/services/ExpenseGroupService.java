@@ -1,4 +1,4 @@
-package com.algocamp.lld_splitwise.services.strategies.split;
+package com.algocamp.lld_splitwise.services;
 
 import org.springframework.stereotype.Service;
 
