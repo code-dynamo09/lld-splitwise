@@ -1,13 +1,17 @@
 package com.algocamp.lld_splitwise.models;
 
 import jakarta.persistence.*;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "expense_group")
-@RequiredArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
 public class ExpenseGroup extends BaseEntity{
 
 
