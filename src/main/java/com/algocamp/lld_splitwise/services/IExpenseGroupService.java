@@ -13,4 +13,8 @@ public interface IExpenseGroupService {
     ExpenseGroup createExpenseGroup(String name,Long createrId,  List<Long> memberIds);
 
     Boolean addMember(Long memberId, Long groupId);
+
+    void removeMember(Long memberId, Long groupId);
+
+    ExpenseGroup getExpenseGroup(Long groupId);
 }
