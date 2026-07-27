@@ -54,6 +54,26 @@ public class ExpenseGroupService implements IExpenseGroupService {
         expenseGroup.getMembers().add(member);
         expenseGroupRepository.save(expenseGroup);
 
-        return null;
+        return true;
+    }
+
+    @Override
+    public void removeMember(Long memberId, Long groupId) {
+
+        User member = userRepository.findById(memberId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        ExpenseGroup expenseGroup = expenseGroupRepository.findById(groupId)
+                .orElseThrow(() -> new RuntimeException("Expense group not found"));
+
+        expenseGroup.getMembers().remove(member);
+        expenseGroupRepository.save(expenseGroup);
+
+    }
+
+    @Override
+    public ExpenseGroup getExpenseGroup(Long groupId) {
+        return  expenseGroupRepository.findById(groupId)
+                .orElseThrow(() -> new RuntimeException("Expense group not found"));
     }
 }
