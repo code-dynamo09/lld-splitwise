@@ -5,6 +5,8 @@ import com.algocamp.lld_splitwise.repositories.ExpenseGroupRepository;
 import com.algocamp.lld_splitwise.repositories.ExpenseRepository;
 import com.algocamp.lld_splitwise.repositories.SplitRepository;
 import com.algocamp.lld_splitwise.repositories.UserRepository;
+import com.algocamp.lld_splitwise.services.strategies.split.EqualSplitStrategy;
+import com.algocamp.lld_splitwise.services.strategies.split.PercentageStrategy;
 import com.algocamp.lld_splitwise.services.strategies.split.SplitStrategy;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
@@ -13,7 +15,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -68,8 +69,8 @@ public class ExpenseService implements IExpenseService{
 
     @PostConstruct
     public void initialiseStrategyMap() {
-        this.strategyMap.put("EQUAL", SplitType.EQUAL);
-        this.strategyMap.put("PERCENTAGE", SplitType.PERCENTAGE);
+        this.strategyMap.put(SplitType.valueOf("EQUAL"), new EqualSplitStrategy());
+        this.strategyMap.put(SplitType.valueOf("PERCENTAGE"), new PercentageStrategy());
 
     }
 }
